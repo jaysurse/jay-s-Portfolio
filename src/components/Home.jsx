@@ -1,7 +1,6 @@
 import { Typewriter } from "react-simple-typewriter";
 import profilePic from "../assets/Nav-Pic.webp";
 import { motion } from "framer-motion";
-import VisitCounter from "./VisitCounter";
 
 export default function Hero() {
   return (
@@ -9,7 +8,6 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-200 via-gray-100 to-white px-6 pb-0 overflow-hidden"
     >
-      <VisitCounter />
       {/* 🎨 Blurred Gradient Blobs */}
       <div className="absolute -top-20 -left-20 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
       <div className="absolute top-32 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000" />
