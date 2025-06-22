@@ -1,13 +1,7 @@
-// src/components/ShimmerText.jsx
-export default function ShimmerText() {
+export default function Loader() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1
-        className="shimmer-text font-a text-5xl md:text-6xl"
-        data-text="Jay's Portfolio"
-      >
-        Jay's Portfolio
-      </h1>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/30 backdrop-blur-md">
+      <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
     </div>
   );
 }
