@@ -15,8 +15,8 @@ const completedProjects = [
     description:
       "My personal developer portfolio showcasing my skills, projects, and background.",
     tech: ["React", "Tailwind CSS"],
-    github: "https://github.com/jaysurse/portfolio",
-    live: "#",
+    github: "https://github.com/jaysurse/jay-s-Portfolio",
+    live: "https://jays-portfolio-site.vercel.app/",
   },
   {
     title: "Voting Management System (C Project)",
