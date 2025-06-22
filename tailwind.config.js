@@ -3,10 +3,17 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      keyframes: {
+        'spin-bounce': {
+          '0%, 100%': { transform: 'rotate(0deg) scale(1)' },
+          '50%': { transform: 'rotate(180deg) scale(1.1)' },
+        },
+      },
       animation: {
         gradient: "gradientBG 6s ease infinite",
         fadeIn: "fadeIn 1s ease-out forwards",
         3000: '3000ms',
+        'spin-bounce': 'spin-bounce 1s linear infinite',
       },
       keyframes: {
         gradientBG: {

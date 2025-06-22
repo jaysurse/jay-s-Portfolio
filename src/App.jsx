@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Home";
@@ -12,14 +12,13 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000); // 2s delay
+    const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <Loader />;
-
   return (
-    <>
+    <div className="relative">
+      {/* App content always renders */}
       <Navbar />
       <Hero />
       <About />
@@ -27,7 +26,10 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
-    </>
+
+      {/* Loader overlays with blur */}
+      {loading && <Loader />}
+    </div>
   );
 }
 

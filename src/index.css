@@ -77,3 +77,14 @@ html {
 .animate-fadeout {
   animation: fadeout 2s ease-out forwards;
 }
+
+@keyframes glow-spin {
+  0%, 100% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 0px blue;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0 0 15px blue;
+  }
+}
