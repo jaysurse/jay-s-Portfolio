@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative">
+    <div className=" text-white min-h-screen overflow-x-hidden">
       {/* App content always renders */}
       <Navbar />
       <Hero />
