@@ -38,19 +38,11 @@ export default function Navbar({ darkMode, setDarkMode }) {
               alt="Jay"
               className="w-10 h-10 rounded-full border-2 border-white shadow-md"
             />
-            <h1 className="text-xl font-bold tracking-wide ">
-              Jay
-            </h1>
+            <h1 className="text-xl font-bold tracking-wide ">Jay</h1>
           </div>
 
           {/* ☰ Mobile Toggle */}
           <div className="lg:hidden flex gap-2">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="text-xl p-2 rounded transition"
-            >
-              {darkMode ? <FaSun /> : <FaMoon />}
-            </button>
             <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl">
               {menuOpen ? <HiX /> : <HiMenu />}
             </button>
