@@ -1,5 +1,6 @@
 // tailwind.config.js
 module.exports = {
+  darkMode: 'class',
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -12,7 +13,7 @@ module.exports = {
       animation: {
         gradient: "gradientBG 6s ease infinite",
         fadeIn: "fadeIn 1s ease-out forwards",
-        3000: '3000ms',
+        
         'spin-bounce': 'spin-bounce 1s linear infinite',
       },
       keyframes: {

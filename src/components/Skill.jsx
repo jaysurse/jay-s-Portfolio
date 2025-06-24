@@ -9,7 +9,6 @@ import {
 } from "react-icons/fa";
 import {
   SiMysql,
-  SiSqlite,
   SiC,
   SiCplusplus,
   SiPython,
@@ -98,13 +97,14 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-100 px-6 py-20 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center 
+                 bg-gradient-to-b from-white to-gray-100 
+                 px-6 py-20 overflow-hidden transition-colors duration-500"
     >
-      {/* Background animated blobs */}
-      <div className="absolute w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob top-10 left-10" />
-      <div className="absolute w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-4000 top-64 right-10" />
+      {/* 🎨 Blurred Gradient Blobs */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-purple-300 rounded-full blur-2xl opacity-20 animate-blob" />
+      <div className="absolute top-64 right-10 w-72 h-72 bg-blue-300 rounded-full blur-2xl opacity-20 animate-blob animation-delay-4000" />
 
-      {/* Content */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,8 @@ export default function Skills() {
                     key={idx}
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white/40 backdrop-blur-md rounded-xl shadow p-5 flex flex-col gap-2 border border-white/20 hover:shadow-lg transition-all"
+                    className="bg-white/50 backdrop-blur-sm rounded-xl shadow p-5 flex flex-col gap-2 
+                               border border-gray-200 hover:shadow-md transition-all"
                   >
                     <div className="flex items-center justify-between text-gray-800 font-medium text-lg">
                       <div className="flex items-center gap-3">
@@ -158,4 +159,3 @@ export default function Skills() {
     </section>
   );
 }
-  

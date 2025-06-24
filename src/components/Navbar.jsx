@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import profilePic from "../assets/Nav-Pic.webp";
 import { HiMenu, HiX } from "react-icons/hi";
+import { FaSun, FaMoon } from "react-icons/fa";
 
-export default function Navbar() {
+export default function Navbar({ darkMode, setDarkMode }) {
   const [isVisible, setIsVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -11,26 +12,18 @@ export default function Navbar() {
 
   useEffect(() => {
     setTimeout(() => setIsVisible(true), 50);
-
-    // Sticky effect on scroll
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className="relative z-50">
-      {/* 🔮 Animated Blobs for Soft Glow */}
-      <div className="absolute w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob top-[-100px] left-[-50px] z-0" />
-      <div className="absolute w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-3000 top-[50px] right-[-80px] z-0" />
-
-      {/* 🌫️ Navbar Container */}
       <nav
         className={`relative z-10 px-6 py-4 mx-4 mt-4 backdrop-blur-lg border border-white/30 shadow-xl rounded-xl transition-all duration-500 ${
-          scrolled ? "bg-white/50" : "bg-white/30"
+          scrolled ? "bg-white/70" : "bg-white/30"
         }`}
       >
         <div
@@ -45,23 +38,26 @@ export default function Navbar() {
               alt="Jay"
               className="w-10 h-10 rounded-full border-2 border-white shadow-md"
             />
-            <h1 className="text-xl font-bold text-gray-800 tracking-wide">
+            <h1 className="text-xl font-bold tracking-wide ">
               Jay
             </h1>
           </div>
 
           {/* ☰ Mobile Toggle */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex gap-2">
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-800 text-2xl focus:outline-none transition-transform duration-300 hover:scale-110"
+              onClick={() => setDarkMode(!darkMode)}
+              className="text-xl p-2 rounded transition"
             >
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </button>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl">
               {menuOpen ? <HiX /> : <HiMenu />}
             </button>
           </div>
 
           {/* 🌍 Desktop Nav */}
-          <ul className="hidden lg:flex space-x-6 text-gray-700 font-medium">
+          <ul className="hidden lg:flex space-x-6 font-medium">
             {navItems.map((item) => (
               <li
                 key={item}
@@ -81,7 +77,7 @@ export default function Navbar() {
 
         {/* 📱 Mobile Nav */}
         {menuOpen && (
-          <ul className="lg:hidden mt-4 space-y-2 text-gray-800 font-semibold px-4 pb-4 transition-all duration-300">
+          <ul className="lg:hidden mt-4 space-y-2 font-semibold px-4 pb-4 transition-all duration-300">
             {navItems.map((item) => (
               <li
                 key={item}

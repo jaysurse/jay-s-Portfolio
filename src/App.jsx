@@ -17,8 +17,7 @@ function App() {
   }, []);
 
   return (
-    <div className=" text-white min-h-screen overflow-x-hidden">
-      {/* App content always renders */}
+    <div className="bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen overflow-x-hidden transition-colors duration-300">
       <Navbar />
       <Hero />
       <About />
