@@ -38,7 +38,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
               alt="Jay"
               className="w-10 h-10 rounded-full border-2 border-white shadow-md"
             />
-            <h1 className="text-xl font-bold tracking-wide ">Jay</h1>
+            <h1 className="text-xl font-bold tracking-wide ">Jay Surse</h1>
           </div>
 
           {/* ☰ Mobile Toggle */}
