@@ -1,21 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const [visitorCount, setVisitorCount] = useState(null);
-  const hasCounted = useRef(false); // ✅ prevent double counting
 
   useEffect(() => {
-    if (!hasCounted.current) {
-      fetch("http://localhost:5000/api/visit")
-        .then((res) => res.json())
-        .then((data) => setVisitorCount(data.count))
-        .catch((err) => {
-          console.error("Visitor count error:", err);
-          setVisitorCount("Error");
-        });
-
-      hasCounted.current = true;
-    }
+    fetch("https://jay-s-portfolio.onrender.com/api/visit")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch visitor count");
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Visitor API data:", data);
+        setVisitorCount(data.count);
+      })
+      .catch((err) => {
+        console.error("Visitor count error:", err);
+        setVisitorCount("Error");
+      });
   }, []);
 
   return (
@@ -28,7 +29,11 @@ export default function Footer() {
         <p className="text-sm text-gray-600">
           👁️ Visitor Count:{" "}
           <span className="font-semibold text-black">
-            {visitorCount !== null ? visitorCount : "Loading..."}
+            {visitorCount === "Error"
+              ? "Error"
+              : visitorCount === null
+              ? "Loading..."
+              : visitorCount}
           </span>
         </p>
 

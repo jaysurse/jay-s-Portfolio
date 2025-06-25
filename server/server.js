@@ -1,4 +1,3 @@
-// server.js
 import express from "express";
 import cors from "cors";
 
@@ -7,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 
 let visitorCount = 0;
 
-app.use(cors()); // Allows frontend to access API
+app.use(cors());
 
 app.get("/api/visit", (req, res) => {
   visitorCount++;
