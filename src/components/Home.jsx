@@ -1,5 +1,5 @@
 import { Typewriter } from "react-simple-typewriter";
-import profilePic from "../assets/Nav-Pic.webp";
+import profilePic from "../assets/download.png";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -10,7 +10,7 @@ export default function Hero() {
                  bg-gradient-to-b from-white to-gray-100 
                  px-6 pt-20 pb-20 overflow-hidden transition-colors duration-500"
     >
-      {/* Blurred Blobs */}
+      {/* Blurred Background Blobs */}
       <div className="absolute -top-24 left-0 w-80 h-80 bg-purple-300 opacity-20 rounded-full blur-3xl animate-blob" />
       <div className="absolute -bottom-32 right-10 w-96 h-96 bg-blue-200 opacity-30 rounded-full blur-2xl animate-blob animation-delay-3000" />
 
@@ -21,7 +21,7 @@ export default function Hero() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 relative z-10"
       >
-        {/* Left: Text */}
+        {/* Left Text Block */}
         <div className="text-left space-y-6">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
             Hi, I'm <span className="text-blue-600">Jay</span>
@@ -52,21 +52,22 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Right: Profile Pic */}
+        {/* Right Image Block */}
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="relative w-64 h-64"
+          className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80"
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 blur-xl opacity-30 animate-pulse" />
           <img
             src={profilePic}
             alt="Jay"
-            className="relative w-64 h-64 rounded-full border-4 border-white shadow-lg z-10"
+            className="relative w-full h-full object-cover rounded-full border-4 border-white shadow-xl z-10"
           />
         </motion.div>
       </motion.div>
     </section>
   );
 }
+  

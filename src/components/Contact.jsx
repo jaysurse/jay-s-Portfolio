@@ -115,36 +115,56 @@ export default function Contact() {
         <h3 className="text-xl font-semibold text-gray-700 mb-4">
           Or connect with me here:
         </h3>
-        <div className="flex justify-center gap-6 text-2xl text-gray-700">
+        <br />
+        <div className="flex flex-wrap justify-center gap-6">
+          {/* GitHub */}
           <a
             href="https://github.com/jaysurse"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform duration-300 hover:text-black"
+            className="group relative flex justify-center items-center p-2 rounded-md drop-shadow-xl from-gray-800 bg-[#333] text-white font-semibold hover:translate-y-2 transition-all duration-250 hover:from-[#000] hover:to-[#111]"
           >
-            <FaGithub />
+            <FaGithub className="w-5 h-5" />
+            <span className="absolute opacity-0 group-hover:opacity-100 group-hover:text-gray-700 group-hover:text-md group-hover:-translate-y-10 duration-500">
+              GitHub
+            </span>
           </a>
+
+          {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/jay-surse/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform duration-300 hover:text-blue-700"
+            className="group relative flex justify-center items-center p-2 rounded-md drop-shadow-xl from-gray-800 bg-[#0A66C2] text-white font-semibold hover:translate-y-2 transition-all duration-250 hover:from-[#08427b] hover:to-[#062e58]"
           >
-            <FaLinkedin />
+            <FaLinkedin className="w-5 h-5" />
+            <span className="absolute opacity-0 group-hover:opacity-100 group-hover:text-gray-700 group-hover:text-md group-hover:-translate-y-10 duration-500">
+              LinkedIn
+            </span>
           </a>
+
+          {/* Instagram */}
           <a
             href="https://www.instagram.com/jayy.__.007/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform duration-300 hover:text-pink-500"
+            className="group relative flex justify-center items-center p-2 rounded-md drop-shadow-xl from-gray-800 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-semibold hover:translate-y-2 transition-all duration-250"
           >
-            <FaInstagram />
+            <FaInstagram className="w-5 h-5" />
+            <span className="absolute opacity-0 group-hover:opacity-100 group-hover:text-gray-700 group-hover:text-md group-hover:-translate-y-10 duration-500">
+              Instagram
+            </span>
           </a>
+
+          {/* Email */}
           <a
             href="mailto:jaysurse07@gmail.com"
-            className="hover:scale-110 transition-transform duration-300 hover:text-red-500"
+            className="group relative flex justify-center items-center p-2 rounded-md drop-shadow-xl from-gray-800 bg-red-500 text-white font-semibold hover:translate-y-2 transition-all duration-250 hover:from-red-600 hover:to-red-700"
           >
-            <FaEnvelope />
+            <FaEnvelope className="w-5 h-5" />
+            <span className="absolute opacity-0 group-hover:opacity-100 group-hover:text-gray-700 group-hover:text-md group-hover:-translate-y-10 duration-500">
+              Email
+            </span>
           </a>
         </div>
       </div>
