@@ -30,11 +30,11 @@ const completedProjects = [
 
 const upcomingProjects = [
   {
-    title: "Skill Swap – Peer Learning Platform",
+    title: "Triptyfy – AI-Based Travel Planner",
     description:
-      "A React-based platform where students can exchange knowledge by offering and requesting skills. Designed with a smooth UI and real-time updates.",
-    tech: ["React", "Tailwind", "Firebase (planned)"],
-    github: "https://github.com/jaysurse/skill-swap",
+      "An intelligent travel planning platform built using React and Tailwind, focused on personalized trip generation across Maharashtra. Features include automated itineraries, Google Maps integration, and user preference filtering.",
+    tech: ["React", "Tailwind", "Google Maps API", "Web Scraping (planned)"],
+    github: "https://github.com/jaysurse/triptyfy",
     live: "",
   },
 ];
