@@ -34,7 +34,7 @@ const upcomingProjects = [
     description:
       "An intelligent travel planning platform built using React and Tailwind, focused on personalized trip generation across Maharashtra. Features include automated itineraries, Google Maps integration, and user preference filtering.",
     tech: ["React", "Tailwind", "Google Maps API", "Web Scraping (planned)"],
-    github: "https://github.com/jaysurse/triptyfy",
+    github: "",
     live: "",
   },
 ];
