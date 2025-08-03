@@ -19,6 +19,14 @@ const completedProjects = [
     live: "https://jays-portfolio-site.vercel.app/",
   },
   {
+    title: "GPP MCQ PORTAL",
+    description:
+      "My personal developer portfolio showcasing my skills, projects, and background.",
+    tech: ["HTML", "CSS", "javascript"],
+    github: "https://github.com/jaysurse/GPP-MCQ-Portal",
+    live: "https://gppmcqportal.vercel.app/",
+  },
+  {
     title: "Voting Management System (C Project)",
     description:
       "A simple terminal-based voting system built using C language. Allows secure voting and result calculation.",
