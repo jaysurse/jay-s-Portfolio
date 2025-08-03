@@ -21,7 +21,7 @@ const completedProjects = [
   {
     title: "GPP MCQ PORTAL",
     description:
-      "My personal developer portfolio showcasing my skills, projects, and background.",
+      "A web-based MCQ platform built using HTML, CSS, JavaScript, and Firebase. Features login/register system, question creation, and admin control.",
     tech: ["HTML", "CSS", "javascript"],
     github: "https://github.com/jaysurse/GPP-MCQ-Portal",
     live: "https://gppmcqportal.vercel.app/",
