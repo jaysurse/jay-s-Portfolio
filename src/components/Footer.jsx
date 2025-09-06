@@ -5,11 +5,11 @@ export default function Footer() {
 
   useEffect(() => {
     fetch("http://localhost:5000/visit") // Use your hosted URL when deployed
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setVisitorCount(data.count);
       })
-      .catch(err => console.log("Visitor fetch error:", err));
+      .catch((err) => console.log("Visitor fetch error:", err));
   }, []);
 
   return (
@@ -34,7 +34,9 @@ export default function Footer() {
         {/* 👇 Visitor Counter */}
         <p className="text-sm text-gray-600">
           {visitorCount !== null ? (
-            <>👀 <strong>{visitorCount}</strong> visitors have viewed this site</>
+            <>
+              👀 <strong>{visitorCount}</strong> visitors have viewed this site
+            </>
           ) : (
             <>Loading visitor count...</>
           )}
