@@ -1,104 +1,157 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-const completedProjects = [
-  {
-    title: "EduDesk – Notes Sharing Platform",
-    description:
-      "A responsive platform for students to upload and access academic notes department-wise.",
-    tech: ["React", "Tailwind", "Firebase"],
-    github: "https://github.com/jaysurse/edu-desk",
-    live: "http://edu-desk-ui.vercel.app",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "My personal developer portfolio showcasing my skills, projects, and background.",
-    tech: ["React", "Tailwind CSS"],
-    github: "https://github.com/jaysurse/jay-s-Portfolio",
-    live: "https://jays-portfolio-site.vercel.app/",
-  },
-  {
-    title: "GPP MCQ PORTAL",
-    description:
-      "A web-based MCQ platform built using HTML, CSS, JavaScript, and Firebase. Features login/register system, question creation, and admin control.",
-    tech: ["HTML", "CSS", "javascript"],
-    github: "https://github.com/jaysurse/GPP-MCQ-Portal",
-    live: "https://gppmcqportal.vercel.app/",
-  },
-  {
-    title: "Voting Management System (C Project)",
-    description:
-      "A simple terminal-based voting system built using C language. Allows secure voting and result calculation.",
-    tech: ["C", "Console UI"],
-    github: "https://github.com/jaysurse/Voting-Management-System-C",
-    live: "",
-  },
-];
+// -------------------- PROJECT DATA --------------------
+const projectsByCategory = {
+  C: [
+    {
+      title: "Voting Management System",
+      description:
+        "A terminal-based voting system developed in C with secure voting and result calculation.",
+      tech: ["C", "Console UI"],
+      github: "https://github.com/jaysurse/Voting-Management-System-C",
+    },
+  ],
 
-const upcomingProjects = [
-  {
-    title: "Triptyfy – AI-Based Travel Planner",
-    description:
-      "An intelligent travel planning platform built using React and Tailwind, focused on personalized trip generation across Maharashtra. Features include automated itineraries, Google Maps integration, and user preference filtering.",
-    tech: ["React", "Tailwind", "Google Maps API", "Web Scraping (planned)"],
-    github: "",
-    live: "",
-  },
-];
+  Java: [
+    {
+      title: "🖥️ CodeType – Java Typing Practice App",
+      description:
+        "Boost your coding speed and accuracy by typing Java code snippets and tracking your performance in real-time. Inspired by MonkeyType, this app is designed to help developers improve their typing skills.",
+      tech: ["Java", "OOP", "File Handling"],
+      github: "https://github.com/jaysurse/CodeType",
+    },
+  ],
 
+  React: [
+    {
+      title: "EduDesk – Notes Sharing Platform",
+      description:
+        "A responsive platform for uploading and accessing department-wise academic notes.",
+      tech: ["React", "Tailwind", "Firebase"],
+      github: "https://github.com/jaysurse/edu-desk",
+      live: "http://edu-desk-ui.vercel.app",
+    },
+    {
+      title: "Portfolio Website",
+      description:
+        "My personal developer portfolio showing skills, projects, and certifications.",
+      tech: ["React", "Tailwind CSS"],
+      github: "https://github.com/jaysurse/jay-s-Portfolio",
+      live: "https://jays-portfolio-site.vercel.app/",
+    },
+  ],
+
+  "Mobile App Development": [
+    {
+      title: "PocketCode",
+      description:
+        "PocketCode is an Android app that lets users write, run, and test code in C, C++, Java, and Python on their devices. It supports runtime input, displays console-like output, and allows saving and opening code files from any location. The app uses the JDoodle API for online code execution.",
+      tech: ["Android Studio", "Java", "JDoodle API"],
+      github: "https://github.com/jaysurse/PocketCode",
+    },
+  ],
+};
+
+// Combine all projects into one list for ALL tab
+const allProjects = Object.values(projectsByCategory).flat();
+
+// -------------------- MAIN COMPONENT --------------------
 export default function Projects() {
+  const categories = ["All", ...Object.keys(projectsByCategory)];
+  const [activeTab, setActiveTab] = useState("All");
+
+  // Determine what to show
+  const getProjects = () =>
+    activeTab === "All" ? allProjects : projectsByCategory[activeTab];
+
   return (
     <section
       id="projects"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-950 px-6 py-20 overflow-hidden transition-colors duration-500"
+      className="relative min-h-screen px-6 py-24 bg-gradient-to-b
+      from-gray-100 to-white dark:from-gray-900 dark:to-black overflow-hidden"
     >
-      <div className="absolute w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob top-10 left-10" />
-      <div className="absolute w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-5000 bottom-16 right-10" />
+      {/* BG Blobs */}
+      <div className="absolute top-10 left-20 w-96 h-96 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
+      <div className="absolute bottom-10 right-20 w-96 h-96 bg-blue-500/20 blur-3xl rounded-full animate-pulse" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-6xl w-full z-10"
-      >
-        <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-12 text-center">
-          🚀 My <span className="text-blue-600">Projects</span>
-        </h2>
+      {/* Header */}
+      <h2 className="text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-10">
+        🚀 My <span className="text-blue-600">Projects</span>
+      </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {completedProjects.map((project, idx) => (
+      {/* -------------------- TABS -------------------- */}
+      <div className="flex justify-center gap-6 mb-16 flex-wrap">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveTab(category)}
+            className={`px-6 py-2 text-lg font-semibold rounded-full border transition-all duration-300 
+              ${
+                activeTab === category
+                  ? "bg-blue-600 text-white border-blue-600 shadow-md scale-105"
+                  : "bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-200 border-white/30 hover:bg-white/30"
+              }
+            `}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      {/* -------------------- PROJECTS DISPLAY -------------------- */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: -20 }}
+          transition={{ duration: 0.3 }}
+          className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10"
+        >
+          {getProjects().map((project, idx) => (
             <motion.div
               key={idx}
               whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/40 dark:bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-xl p-6 space-y-4 hover:shadow-xl transition-shadow"
+              className="relative group bg-white/20 dark:bg-white/10 backdrop-blur-xl
+                rounded-2xl p-8 border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              {/* Hover Glow Border */}
+              <div
+                className="absolute inset-0 rounded-2xl border-2 
+                border-transparent group-hover:border-blue-400/40 
+                transition-all duration-300"
+              ></div>
+
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {project.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+
+              <p className="text-gray-600 dark:text-gray-300 mt-3">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              {/* Tech */}
+              <div className="flex flex-wrap gap-2 mt-4">
                 {project.tech.map((t, i) => (
                   <span
                     key={i}
-                    className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-sm font-medium px-3 py-1 rounded-full"
+                    className="px-3 py-1 text-sm rounded-full
+                    bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300"
                   >
                     {t}
                   </span>
                 ))}
               </div>
 
-              <div className="flex gap-4 mt-4 text-xl">
+              {/* Links */}
+              <div className="flex gap-4 mt-6 text-2xl">
                 {project.github && (
                   <a
                     href={project.github}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white"
+                    className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white"
                   >
                     <FaGithub />
                   </a>
@@ -107,8 +160,7 @@ export default function Projects() {
                   <a
                     href={project.live}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-300"
                   >
                     <FaExternalLinkAlt />
                   </a>
@@ -116,51 +168,8 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <h3 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">
-          🛠️ Upcoming <span className="text-purple-600">Projects</span>
-        </h3>
-        <div className="grid md:grid-cols-2 gap-8">
-          {upcomingProjects.map((project, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-xl p-6 space-y-4 hover:shadow-xl transition-shadow"
-            >
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                {project.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t, i) => (
-                  <span
-                    key={i}
-                    className="bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 text-sm font-medium px-3 py-1 rounded-full"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white text-xl"
-                >
-                  <FaGithub />
-                </a>
-              )}
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }
