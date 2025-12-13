@@ -7,24 +7,32 @@ import Skills from "./components/Skill";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import VoiceAssistant from "./components/VoiceAssistant";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
+  const [voiceEnabled, setVoiceEnabled] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
 
-      // Show welcome popup only once per session
       if (!sessionStorage.getItem("popupShown")) {
         setShowPopup(true);
         sessionStorage.setItem("popupShown", "true");
+      } else {
+        setVoiceEnabled(true);
       }
     }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
+
+  const closePopup = () => {
+    setShowPopup(false);
+    setVoiceEnabled(true);
+  };
 
   return (
     <div className="bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen overflow-x-hidden transition-colors duration-300">
@@ -36,12 +44,11 @@ function App() {
       <Contact />
       <Footer />
 
-      {/* Loader */}
       {loading && <Loader />}
 
       {!loading && showPopup && (
         <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white/10 dark:bg-white/10 backdrop-blur-md border border-white/30 shadow-lg rounded-xl p-6 text-center max-w-sm w-full text-white">
+          <div className="bg-white/10 backdrop-blur-md border border-white/30 shadow-lg rounded-xl p-6 text-center max-w-sm w-full text-white">
             <h2 className="text-2xl font-bold mb-2">Hey there 👋</h2>
             <p className="mb-4 text-sm text-white/90">
               Welcome to my portfolio, I'm Jay Surse — a CS student.
@@ -58,15 +65,18 @@ function App() {
                 Connect on LinkedIn
               </a>
               <button
-                onClick={() => setShowPopup(false)}
+                onClick={closePopup}
                 className="border border-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-white hover:text-black transition"
               >
-                Maybe later
+                Continue
               </button>
             </div>
           </div>
         </div>
       )}
+
+      {/* Voice Assistant */}
+      <VoiceAssistant enabled={voiceEnabled} />
     </div>
   );
 }
